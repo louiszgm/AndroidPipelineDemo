@@ -13,7 +13,7 @@ pipeline {
                 docker {
                     image 'mingc/android-build-box:1.11.1'
                     label 'linode-ubuntu19.04'
-                        args """--rm -v "${WORKSPACE}":/project bach -c 'cd /project; ./gradlew assembleDebug --no-daemon'"""
+                        args "--rm -v ${WORKSPACE}:/project bach -c 'cd /project; ./gradlew assembleDebug --no-daemon'"
                 }
             }
             steps {
