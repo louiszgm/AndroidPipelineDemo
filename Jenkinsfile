@@ -16,7 +16,7 @@ pipeline {
     }
         stage('Depoly'){
             steps {
-                  sh "${env.WORKSPACE}/tools/depoly.sh"
+                  sh "${env.WORKSPACE}/tools/depoly.sh ${env.WORKSPACE}/app/build/outputs/apk/debug/app-debug.apk"
             }
         }
   }
