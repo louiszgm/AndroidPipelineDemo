@@ -14,5 +14,16 @@ pipeline {
                 sh "docker run --rm -v ${env.WORKSPACE}:/project mingc/android-build-box:1.11.1 bash -c 'cd /project; ./gradlew assembleDebug --no-daemon'"
         }
     }
+        stage('Depoly'){
+            steps {
+                  sh "{env.WORKSPACE}/tools/depoly.sh"
+            }
+        }
   }
+
+     post {
+         always {
+             echo "Pipeline Finish"
+         }
+     }
 }
