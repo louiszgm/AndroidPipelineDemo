@@ -9,15 +9,9 @@ pipeline {
             }
         }
         stage('Build') {
-            agent {
-                docker {
-                    image 'mingc/android-build-box:1.11.1'
-                    label 'linode-ubuntu19.04'
-                        args "--rm -v ${env.WORKSPACE}:/project bach -c 'cd /project; ./gradlew assembleDebug --no-daemon'"
-                }
-            }
             steps {
                 echo '****** Start Build Process *******'
+                sh "docker run --rm -v ${env.WORKSPACE}:/project mingc/android-build-box:1.11.1 bash -c 'cd /project; ./gradlew assembleDebug --no-daemon'"
         }
     }
   }
