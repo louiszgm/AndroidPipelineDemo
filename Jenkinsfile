@@ -6,7 +6,6 @@ pipeline {
         stage('Git Clone'){
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/louiszgm/AndroidPipelineDemo.git']]])
-
             }
         }
         stage('Build') {
@@ -21,4 +20,5 @@ pipeline {
                 echo '****** Start Build Process *******'
         }
     }
+  }
 }
